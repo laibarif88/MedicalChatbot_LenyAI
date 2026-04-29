@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Preferences Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for better visibility */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Preferences Modal Test</h1>
+        <button id="openModal" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+            Open Preferences Modal
+        </button>
+    </div>
+
+    <!-- Preferences Modal -->
+    <div id="preferencesModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="w-full max-w-4xl h-[80vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+            <!-- Header with Steps -->
+            <div class="bg-gray-50 px-8 py-6 border-b border-gray-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Preferences</h1>
+                    <button id="closeModal" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Step Navigation -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center flex-1">
+                        <button class="flex items-center gap-3 p-3 rounded-lg bg-orange-500 text-white">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-white text-orange-500">
+                                1
+                            </div>
+                            <div class="text-left">
+                                <p class="font-medium text-sm">Basic Settings</p>
+                                <p class="text-xs opacity-75">Theme and appearance</p>
+                            </div>
+                        </button>
+                        <div class="flex-1 h-0.5 mx-4 bg-gray-200"></div>
+                    </div>
+                    <div class="flex items-center flex-1">
+                        <button class="flex items-center gap-3 p-3 rounded-lg bg-gray-100 text-gray-500">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-300 text-gray-600">
+                                2
+                            </div>
+                            <div class="text-left">
+                                <p class="font-medium text-sm">Communication</p>
+                                <p class="text-xs opacity-75">How you receive info</p>
+                            </div>
+                        </button>
+                        <div class="flex-1 h-0.5 mx-4 bg-gray-200"></div>
+                    </div>
+                    <div class="flex items-center flex-1">
+                        <button class="flex items-center gap-3 p-3 rounded-lg bg-gray-100 text-gray-500">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold bg-gray-300 text-gray-600">
+                                3
+                            </div>
+                            <div class="text-left">
+                                <p class="font-medium text-sm">Personalization</p>
+                                <p class="text-xs opacity-75">Your interests & goals</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-1 min-h-0">
+                <div class="h-full overflow-y-auto custom-scrollbar">
+                    <div class="p-8">
+                        <!-- Test Content with lots of items to test scrolling -->
+                        <div class="space-y-8">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-bold text-gray-800 mb-2">Test Scrolling Content</h2>
+                                <p class="text-gray-600">This content should be scrollable when it exceeds the modal height</p>
+                            </div>
+
+                            <!-- Theme Preferences -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Appearance Theme</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <button class="p-6 rounded-xl border border-orange-500 bg-orange-50 text-center">
+                                        <div class="text-4xl mb-3">☀️</div>
+                                        <p class="font-semibold text-base">Light</p>
+                                        <p class="text-sm text-gray-500">Bright and clean interface</p>
+                                    </button>
+                                    <button class="p-6 rounded-xl border border-gray-200 hover:border-gray-300 text-center">
+                                        <div class="text-4xl mb-3">🌙</div>
+                                        <p class="font-semibold text-base">Dark</p>
+                                        <p class="text-sm text-gray-500">Easy on the eyes in low light</p>
+                                    </button>
+                                    <button class="p-6 rounded-xl border border-gray-200 hover:border-gray-300 text-center">
+                                        <div class="text-4xl mb-3">🔄</div>
+                                        <p class="font-semibold text-base">Auto</p>
+                                        <p class="text-sm text-gray-500">Matches your system preference</p>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Language Preference -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Language</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <button class="p-4 rounded-xl border border-orange-500 bg-orange-50 text-left flex items-center gap-3">
+                                        <span class="text-2xl">🇺🇸</span>
+                                        <div>
+                                            <p class="font-medium text-gray-800">English</p>
+                                            <p class="text-sm text-gray-500">EN</p>
+                                        </div>
+                                    </button>
+                                    <button class="p-4 rounded-xl border border-gray-200 hover:border-gray-300 text-left flex items-center gap-3">
+                                        <span class="text-2xl">🇪🇸</span>
+                                        <div>
+                                            <p class="font-medium text-gray-800">Español</p>
+                                            <p class="text-sm text-gray-500">ES</p>
+                                        </div>
+                                    </button>
+                                    <button class="p-4 rounded-xl border border-gray-200 hover:border-gray-300 text-left flex items-center gap-3">
+                                        <span class="text-2xl">🇫🇷</span>
+                                        <div>
+                                            <p class="font-medium text-gray-800">Français</p>
+                                            <p class="text-sm text-gray-500">FR</p>
+                                        </div>
+                                    </button>
+                                    <button class="p-4 rounded-xl border border-gray-200 hover:border-gray-300 text-left flex items-center gap-3">
+                                        <span class="text-2xl">🇩🇪</span>
+                                        <div>
+                                            <p class="font-medium text-gray-800">Deutsch</p>
+                                            <p class="text-sm text-gray-500">DE</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Additional Settings -->
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">More Settings</h3>
+                                <p class="text-gray-600 text-sm mb-4">Additional customization options will be available in future updates.</p>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span>Font size, accessibility options, and more coming soon</span>
+                                </div>
+                            </div>
+
+                            <!-- Extra content to test scrolling -->
+                            <div class="space-y-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Test Scrolling Items</h3>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <div class="p-4 bg-blue-50 rounded-lg">Item 1 - This is test content to ensure scrolling works properly</div>
+                                    <div class="p-4 bg-green-50 rounded-lg">Item 2 - More content to test vertical scrolling</div>
+                                    <div class="p-4 bg-yellow-50 rounded-lg">Item 3 - Additional content for scroll testing</div>
+                                    <div class="p-4 bg-purple-50 rounded-lg">Item 4 - Even more content to verify scrolling</div>
+                                    <div class="p-4 bg-pink-50 rounded-lg">Item 5 - Final test item for scrolling verification</div>
+                                    <div class="p-4 bg-indigo-50 rounded-lg">Item 6 - Extra content to ensure modal scrolls</div>
+                                    <div class="p-4 bg-red-50 rounded-lg">Item 7 - Last item to test scroll functionality</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer with Navigation -->
+            <div class="bg-gray-50 px-8 py-6 border-t border-gray-200">
+                <div class="flex justify-between items-center">
+                    <button class="px-6 py-2 bg-gray-100 text-gray-400 rounded-xl font-medium cursor-not-allowed">
+                        Previous
+                    </button>
+                    <div class="text-sm text-gray-500">Step 1 of 3</div>
+                    <button class="px-6 py-2 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modal = document.getElementById('preferencesModal');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

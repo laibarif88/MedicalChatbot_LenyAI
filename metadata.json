@@ -1,0 +1,7 @@
+{
+  "name": "Leny AI Medical Chat",
+  "description": "A sophisticated medical chat application designed for patients, families, and healthcare providers to get trusted medical answers. Features a professional interface for navigating conversations, accessing specialist information, and asking health-related questions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

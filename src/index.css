@@ -1,0 +1,498 @@
+:root {
+  --bg-main: #FAF6F2;
+  --bg-sidebar: #FFFFFF;
+  --bg-message: #FFFFFF;
+  --bg-user-message: #C97A20;
+  --bg-user-message-text: #FFFFFF;
+  --border: #E8D5C8;
+  --border-light: #F2E6DC;
+  --text-primary: #2D241F;
+  --text-secondary: #5C4A3F;
+  --text-meta: #8B7265;
+  --accent-orange: #C97A20;
+  --accent-blue: #4F7C8A;
+  --accent-green: #6B8068;
+  --accent-purple: #8B4789;
+  --success: #4CAF50;
+  --warning: #FF9800;
+}
+
+/* Add animation classes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-meta);
+}
+
+/* Utility classes */
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-75 {
+  animation-delay: 75ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  min-width: 160px;
+  padding: 8px 0;
+  margin-top: 4px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #374151;
+  font-size: 14px;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.chevron-down {
+  transition: transform 0.2s ease-in-out;
+}
+
+.chevron-down.open {
+  transform: rotate(180deg);
+}
+
+/* Phase 1: Zero-Impact Medical Formatting Classes */
+
+/* Warning Box - For critical medical warnings */
+.warning-box {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FED7AA 100%);
+  border-left: 4px solid #F59E0B;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+.warning-box b {
+  color: #92400E;
+}
+
+/* Tip Box - For helpful medical advice */
+.tip-box {
+  background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+  border-left: 4px solid #8B5CF6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+
+.tip-box b {
+  color: #5B21B6;
+}
+
+/* Info Card - For general medical information */
+.info-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Unified Medical Formatting Styles */
+
+/* Medical Warning Box - Prominent alerts */
+.medical-warning-box {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FED7AA 100%);
+  border: 1px solid #F59E0B;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.1);
+}
+
+.medical-warning-box .warning-title {
+  color: #92400E;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.medical-warning-box .warning-content {
+  color: #78350F;
+  line-height: 1.6;
+}
+
+.medical-warning-box .warning-item {
+  margin: 8px 0;
+  padding-left: 8px;
+  color: #92400E;
+}
+
+/* Medical Headers */
+.medical-title {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.medical-section {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  line-height: 1.4;
+}
+
+/* Medical Lists */
+.medical-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.medical-list li {
+  position: relative;
+  padding-left: 20px;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.medical-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+/* Medication Dose Formatting */
+.medication-dose,
+.dose-highlight {
+  background: #F0F9FF;
+  color: #0C4A6E;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 0.95em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Stat Numbers */
+.stat-number,
+.number-highlight {
+  color: var(--accent-orange);
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+/* Medical Terms - Important conditions/medications */
+.medical-term {
+  color: #7C2D12;
+  font-weight: 600;
+  background: linear-gradient(to right, rgba(251, 146, 60, 0.1), transparent);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Emergency/Critical Terms */
+.medical-term:has-text("emergency"),
+.medical-term:has-text("urgent"),
+.medical-term:has-text("critical") {
+  color: #DC2626;
+  background: rgba(254, 226, 226, 0.5);
+}
+
+/* Stat Numbers */
+.stat-number {
+  color: var(--accent-orange);
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* Enhanced Message Content */
+.message-content code {
+  background: #F0F9FF;
+  color: #0369A1;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.message-content b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.message-content i {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Section Headers with Medical Emojis */
+.message-content h1,
+.message-content h2,
+.message-content h3 {
+  margin: 20px 0 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-content h1 {
+  font-size: 1.5em;
+  color: var(--accent-orange);
+}
+
+.message-content h2 {
+  font-size: 1.25em;
+  border-left: 3px solid var(--accent-orange);
+  padding-left: 12px;
+}
+
+.message-content h3 {
+  font-size: 1.1em;
+}
+
+/* Bullet Points Enhancement */
+.message-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0;
+}
+
+.message-content ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.message-content ul li:before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: var(--accent-orange);
+  font-weight: bold;
+}
+
+/* Nested bullet points with arrows */
+.message-content ul ul li:before {
+  content: "→";
+  color: var(--text-secondary);
+}
+
+/* Horizontal Rule Styling */
+.message-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(217, 121, 65, 0.3), 
+    transparent);
+  margin: 24px 0;
+}
+
+/* Thinking dots animation for loading */
+@keyframes thinking-dot-1 {
+  0%, 60%, 100% { opacity: 0; }
+  20% { opacity: 1; }
+}
+
+@keyframes thinking-dot-2 {
+  0%, 60%, 100% { opacity: 0; }
+  30% { opacity: 1; }
+}
+
+@keyframes thinking-dot-3 {
+  0%, 60%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+.thinking-dots span:nth-child(1) {
+  animation: thinking-dot-1 1.4s infinite;
+}
+
+.thinking-dots span:nth-child(2) {
+  animation: thinking-dot-2 1.4s infinite;
+}
+
+.thinking-dots span:nth-child(3) {
+  animation: thinking-dot-3 1.4s infinite;
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 768px) {
+  /* Ensure 16px minimum font size to prevent zoom on iOS */
+  input, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Better touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability */
+  .message-content {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Better spacing for mobile */
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure sidebar takes full width on mobile when open */
+  aside {
+    width: 100vw !important;
+  }
+}
+
+/* Touch-friendly interactions */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Verified badge styling */
+.verified-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Small verified badge styling */
+.verified-badge-small {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 1px 4px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Refined AI badge styling */
+.ai-badge {
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+  color: #C97A20;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid #F2E6DC;
+  box-shadow: 0 1px 2px rgba(201, 122, 32, 0.1);
+}
